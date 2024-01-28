@@ -1,10 +1,11 @@
 import React from "react";
 import ArrowDisabled from "../../assets/diable arrow.png";
 import arrow from "../../assets/arrow.png";
+import backArrow from "../../assets/back.png";
 import NotesItems from "./NotesItems";
 import { firstInitials } from "../../utils/initialsUtils";
 import styles from "../../pages/Home/styles.module.css";
-import { getFromLocalStorage } from "../../utils/localStorageUtils";
+import { getFromLocalStorage, saveToLocalStorage } from "../../utils/localStorageUtils";
 
 const NotesList = ({
   selectedGroupItem,
@@ -12,19 +13,22 @@ const NotesList = ({
   handleChange,
   handleSubmit,
   selectedGroup,
+  isMobile,
+  setSelectedGroup
 }) => {
-  console.log(selectedGroup,'from notrs')
-  const localStorageData = getFromLocalStorage("notes");
+
+
   let notesData = [];
+  const localStorageData = getFromLocalStorage("notes");
   if (localStorageData && selectedGroup) {
     notesData = localStorageData[selectedGroup] || [];
   }
-  console.log(notesData?.data, "dfghjkl");
-
+  
 
   return (
     <div className={styles.groupContent}>
       <div className={styles.NotesHeader}>
+       {isMobile? <div className={styles.backArrow} onClick={()=>setSelectedGroup('')}><img src={backArrow} alt="backarrow"/></div> : '' }
         <figure
           className={styles.groupItemFigure}
           style={{
@@ -47,13 +51,11 @@ const NotesList = ({
         </div>
       </div>
       <div className={styles.areaWrapper}>
-      <div className={styles.NotesArea}>
-              {
-                notesData?.data?.map((item,index)=>(
-        <NotesItems item={item} />
-        ))
-      }
-     </div>
+        <div className={styles.NotesArea}>
+          {notesData?.data?.map((item, index) => (
+            <NotesItems item={item} />
+          ))}
+        </div>
       </div>
 
       <form onSubmit={handleSubmit}>

@@ -22,6 +22,7 @@
 
 .selected {
   background-color: #e6f7ff !important;
+  border-radius: 1rem;
 }
 
 .GroupListHeading {

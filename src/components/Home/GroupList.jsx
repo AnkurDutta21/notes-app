@@ -13,7 +13,7 @@ const GroupList = ({setSelectedGroup,selectedGroup,setIsModalOpen}) => {
   return (
     <div className={styles.groupList}>
         <h2 className={styles.GroupListHeading}>Pocket Notes</h2>
-          <div style={{height:'100vh'}}>
+          <div style={{height:'69vh'}}>
         {groupList?.map((group,index) => (
           <GroupItems
              key={index}

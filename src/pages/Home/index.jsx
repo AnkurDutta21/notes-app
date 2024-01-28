@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "./styles.module.css";
 import MainContainer from "../../layout/MainContainer";
 import HomeModal from "../../components/Modal/HomeModal/HomeModal";
 import GroupList from "../../components/Home/GroupList";
@@ -59,7 +58,12 @@ const Home = () => {
         ""
       )}
       {selectedGroup && isMobile ? (
-        <GroupContent groupList={groupList} selectedGroup={selectedGroup} />
+        <GroupContent
+          groupList={groupList}
+          selectedGroup={selectedGroup}
+          isMobile={isMobile}
+          setSelectedGroup={setSelectedGroup}
+        />
       ) : (
         <>
           <GroupList
@@ -67,7 +71,11 @@ const Home = () => {
             selectedGroup={selectedGroup}
             setIsModalOpen={setIsModalOpen}
           />
-          <GroupContent groupList={groupList} selectedGroup={selectedGroup} />
+          <GroupContent
+            groupList={groupList}
+            selectedGroup={selectedGroup}
+            isMobile={isMobile}
+          />
         </>
       )}
     </MainContainer>

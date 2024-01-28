@@ -6,7 +6,7 @@ import { saveToLocalStorageForGroups } from "../../utils/localStorageUtils";
 import { formatDateTime } from "../../utils/timeStampUtils";
 import NotesList from "./NotesList";
 
-const GroupContent = ({ groupList, selectedGroup }) => {
+const GroupContent = ({ groupList, selectedGroup,isMobile,setSelectedGroup }) => {
   const [notes, setNotes] = useState("");
 
   const selectedGroupItem = groupList?.find(
@@ -41,6 +41,8 @@ const GroupContent = ({ groupList, selectedGroup }) => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           selectedGroup={selectedGroup}
+          isMobile={isMobile}
+          setSelectedGroup={setSelectedGroup}
         />
       ) : (
         <GroupContentDefault/>
