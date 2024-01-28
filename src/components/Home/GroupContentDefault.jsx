@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../pages/Home/styles.module.css'
 import defaultImg from '../../assets/defaultImg.png'
-import vector from '../../assets/vector.png'
+import vector from '../../assets/Vector.png'
 
 
 const GroupContentDefault = () => {
