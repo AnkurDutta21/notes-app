@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styles from "./modal.module.css";
 
-const HomeModal = ({colours,
-    setIsModalOpen,
-    onChangeInput,
-    onSubmit,
-    onChangeColor,
-    groupName,}) => {
-  const [selected,setSelected]=useState('')
+const HomeModal = ({
+  colours,
+  setIsModalOpen,
+  onChangeInput,
+  onSubmit,
+  onChangeColor,
+  groupName,
+}) => {
+  const [selected, setSelected] = useState("");
+
   const handleModalClose = () => {
     setIsModalOpen(false);
     console.log(click);
@@ -40,8 +43,10 @@ const HomeModal = ({colours,
                     borderRadius: "50%",
                     backgroundColor: item.color,
                     cursor: "pointer",
-                    boxShadow: selected === item.color ?'0px 0px 0px 2px rgba(0, 0, 0, 0.3)'
-                    : ''
+                    boxShadow:
+                      selected === item.color
+                        ? "0px 0px 0px 2px rgba(0, 0, 0, 0.3)"
+                        : "",
                   }}
                   onClick={() => {
                     onChangeColor(item.color);

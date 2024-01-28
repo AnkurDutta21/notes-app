@@ -26,17 +26,15 @@ export const clearLocalStorage = (key) => {
   }
 };
 
-
 export const saveToLocalStorageForGroups = (key, Userdata) => {
   try {
-     let data = JSON.parse(localStorage.getItem(key)) || {};
-     if (!data[Userdata.group]) {
-       data[Userdata.group] = { data: [] };
-     }
-     data[Userdata.group].data.push(Userdata.data);
-     localStorage.setItem(key, JSON.stringify(data));
-  } 
-  catch (err) {
-     console.log(err, "++-------------------");
+    let data = JSON.parse(localStorage.getItem(key)) || {};
+    if (!data[Userdata.group]) {
+      data[Userdata.group] = { data: [] };
+    }
+    data[Userdata.group].data.push(Userdata.data);
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (err) {
+    console.log(err, "++-------------------");
   }
- };
+};

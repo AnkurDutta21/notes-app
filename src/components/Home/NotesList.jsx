@@ -5,7 +5,10 @@ import backArrow from "../../assets/back.png";
 import NotesItems from "./NotesItems";
 import { firstInitials } from "../../utils/initialsUtils";
 import styles from "../../pages/Home/styles.module.css";
-import { getFromLocalStorage, saveToLocalStorage } from "../../utils/localStorageUtils";
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from "../../utils/localStorageUtils";
 
 const NotesList = ({
   selectedGroupItem,
@@ -14,27 +17,34 @@ const NotesList = ({
   handleSubmit,
   selectedGroup,
   isMobile,
-  setSelectedGroup
+  setSelectedGroup,
 }) => {
-
-
   let notesData = [];
   const localStorageData = getFromLocalStorage("notes");
   if (localStorageData && selectedGroup) {
     notesData = localStorageData[selectedGroup] || [];
   }
-  
 
   return (
     <div className={styles.groupContent}>
       <div className={styles.NotesHeader}>
-       {isMobile? <div className={styles.backArrow} onClick={()=>setSelectedGroup('')}><img src={backArrow} alt="backarrow"/></div> : '' }
+        {isMobile ? (
+          <div
+            className={styles.backArrow}
+            onClick={() => setSelectedGroup("")}
+          >
+            <img src={backArrow} alt="backarrow" />
+          </div>
+        ) : (
+          ""
+        )}
         <figure
           className={styles.groupItemFigure}
           style={{
             borderRadius: "3rem",
             backgroundColor: selectedGroupItem.selectedColor,
             padding: "1.1rem 1rem",
+            
             color: "#fff",
           }}
         >
