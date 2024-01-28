@@ -70,7 +70,7 @@ const NotesList = ({
 
       <form onSubmit={handleSubmit}>
         <div className={styles.NotesInput}>
-          <textarea rows={5} value={notes} onChange={handleChange} />
+          <textarea rows={5} value={notes} onChange={handleChange} placeholder="Enter your notes here......"/>
           <button type="submit" className={styles.notesSubmit}>
             {notes ? (
               <img src={arrow} alt="active" />
