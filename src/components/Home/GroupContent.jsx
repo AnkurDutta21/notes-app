@@ -18,7 +18,6 @@ const GroupContent = ({ groupList, selectedGroup }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(selectedGroup, "ggggg");
     e.preventDefault();
     const date = new Date();
     const { formattedDate, formattedTime } = formatDateTime(date);
@@ -30,6 +29,7 @@ const GroupContent = ({ groupList, selectedGroup }) => {
         time: formattedTime,
       },
     });
+    setNotes('')
   };
 
   return (
