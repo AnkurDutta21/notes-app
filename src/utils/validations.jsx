@@ -1,9 +1,18 @@
-export const moadalValidations = (name) => {
+export const modalValidations = (name, color) => {
+  let errMessage = {
+    name:'',
+    color:''
+  }
+
   if (!name) {
-    return "please enter a name ";
-  }
+    errMessage.name = "Enter a valid group name"
+  } 
+  
+
   if (!color) {
-    return "please select a color";
+    errMessage.color = "Select a color"
   }
-  return true;
-};
+
+console.log(errMessage,'1111111111111111111')
+  return { validation : errMessage}
+}

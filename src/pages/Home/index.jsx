@@ -8,6 +8,7 @@ import {
   saveToLocalStorage,
 } from "../../utils/localStorageUtils";
 import GroupContent from "../../components/Home/GroupContent";
+import { modalValidations } from "../../utils/validations";
 
 const Home = () => {
   const groupList = getFromLocalStorage("group");
@@ -16,6 +17,7 @@ const Home = () => {
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [errMessage,setErrMessage]=useState('')
 
   const handleInputChange = (e) => {
     setGroupName(e.target.value);
@@ -26,11 +28,20 @@ const Home = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    saveToLocalStorage("group", { groupName, selectedColor });
-    console.warn({ groupName, selectedColor });
-    setIsModalOpen(false);
+      e.preventDefault();
+      const {validation} = modalValidations(groupName,selectedColor)
+      if(!validation?.name && !validation?.color){
+        saveToLocalStorage("group", { groupName, selectedColor });
+        setIsModalOpen(false);
+        setGroupName('')
+        setSelectedColor('')
+      }
+      else{
+        setErrMessage(validation)
+      }
+  
   };
+
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -53,6 +64,7 @@ const Home = () => {
           onChangeColor={handleColorSelect}
           onSubmit={handleSubmit}
           groupName={groupName}
+          errMessage={errMessage}
         />
       ) : (
         ""

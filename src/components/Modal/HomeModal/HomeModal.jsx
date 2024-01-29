@@ -8,13 +8,18 @@ const HomeModal = ({
   onSubmit,
   onChangeColor,
   groupName,
+  errMessage,
 }) => {
+
+
   const [selected, setSelected] = useState("");
 
   const handleModalClose = () => {
     setIsModalOpen(false);
     console.log(click);
   };
+  console.log(errMessage?.color,'[[[[[[[[[[[[[[[[[[[[[[')
+
   return (
     <div className={styles.ModalOverlay}>
       <div className={styles.ModalContainer}>
@@ -31,6 +36,11 @@ const HomeModal = ({
               placeholder="Enter group name"
             />
           </div>
+          {errMessage?.name ? (
+            <p className={styles.err}>{errMessage?.name}</p>
+          ) : (
+            ""
+          )}
           <div className={styles.ChooseColors}>
             <p>Choose Colour</p>
             <div className={styles.ColourPalette}>
@@ -56,6 +66,7 @@ const HomeModal = ({
               ))}
             </div>
           </div>
+            {errMessage?.color ? <p className={styles.err}>{errMessage?.color}</p>:''}
           <button className={styles.ModalSubmitBtn} type="submit">
             Create
           </button>

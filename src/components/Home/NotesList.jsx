@@ -43,8 +43,7 @@ const NotesList = ({
           style={{
             borderRadius: "3rem",
             backgroundColor: selectedGroupItem.selectedColor,
-            padding: "1.1rem 1rem",
-            
+            padding:firstInitials(selectedGroupItem.groupName).length == 2 ? "1rem 1rem" : '1.1rem 1.5rem' ,
             color: "#fff",
           }}
         >

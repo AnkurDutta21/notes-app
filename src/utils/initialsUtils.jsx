@@ -1,6 +1,10 @@
 export const firstInitials = (string) => {
   const [name, title] = string?.split(" ");
-  return (
-    name?.substring(0, 1).toUpperCase() + title?.substring(0, 1).toUpperCase()
-  );
+   if(name && title){
+    return name?.substring(0, 1).toUpperCase() + title?.substring(0, 1).toUpperCase()
+  }
+  else{
+    return name?.substring(0,1).toUpperCase()
+  }
+  
 };

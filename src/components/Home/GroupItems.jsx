@@ -13,10 +13,11 @@ const GroupItems = ({ GroupName, selected, onClick, color }) => {
       <figure
         className={styles.groupItemFigure}
         style={{
-          borderRadius: "3rem",
+          borderRadius: "50%",
           backgroundColor: color,
-          padding: "1.1rem 1rem",
+          padding:firstInitials(GroupName).length == 2 ? "1rem 1rem" : '1.1rem 1.5rem' ,
           color: "#fff",
+          textAlign:'center'
         }}
       >
         {firstInitials(GroupName)}
