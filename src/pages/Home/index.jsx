@@ -33,15 +33,11 @@ const Home = () => {
     e.preventDefault();
     const { validation } = modalValidations(groupName, selectedColor);
     if (!validation?.name && !validation?.color) {
-      try {
         saveToLocalStorage("group", { groupName, selectedColor });
         setIsModalOpen(false);
         setGroupName("");
         setSelectedColor("");
         setErrMessage("");
-      } catch (err) {
-        console.log(err.message, "error");
-      }
     } else {
       setErrMessage(validation);
     }

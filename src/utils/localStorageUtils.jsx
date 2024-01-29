@@ -4,16 +4,19 @@ export const saveToLocalStorage = (key, data) => {
   try {
     const isDataAvailable = localStorage.getItem(key);
     const newData = isDataAvailable ? JSON.parse(isDataAvailable) : [];
-
-    if (newData.find((item) => item.name === data.name)) {
+    
+    if (newData.find((item) => item.groupName === data.groupName)) {
       throw new Error("Group name already exist");
     }
+    else{
+      newData.push(data);
+      localStorage.setItem(key, JSON.stringify(newData));
+    }
 
-    newData.push(data);
-    localStorage.setItem(key, JSON.stringify(newData));
+   
     
   } catch (err) {
-    // console.log(err.message, "++-------------------");
+    console.log(err.message, "++-------------------");
    toast(err.message)
   }
 };
