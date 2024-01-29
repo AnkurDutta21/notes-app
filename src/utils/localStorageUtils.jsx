@@ -1,11 +1,20 @@
+import { toast } from "react-toastify";
+
 export const saveToLocalStorage = (key, data) => {
   try {
     const isDataAvailable = localStorage.getItem(key);
     const newData = isDataAvailable ? JSON.parse(isDataAvailable) : [];
+
+    if (newData.find((item) => item.name === data.name)) {
+      throw new Error("Group name already exist");
+    }
+
     newData.push(data);
     localStorage.setItem(key, JSON.stringify(newData));
+    
   } catch (err) {
-    console.log(err, "++-------------------");
+    // console.log(err.message, "++-------------------");
+   toast(err.message)
   }
 };
 

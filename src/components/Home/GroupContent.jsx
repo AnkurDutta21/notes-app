@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "../../pages/Home/styles.module.css";
 import GroupContentDefault from "./GroupContentDefault";
 
 import { saveToLocalStorageForGroups } from "../../utils/localStorageUtils";

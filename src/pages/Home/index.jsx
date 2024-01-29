@@ -9,6 +9,8 @@ import {
 } from "../../utils/localStorageUtils";
 import GroupContent from "../../components/Home/GroupContent";
 import { modalValidations } from "../../utils/validations";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const groupList = getFromLocalStorage("group");
@@ -17,7 +19,7 @@ const Home = () => {
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [errMessage,setErrMessage]=useState('')
+  const [errMessage, setErrMessage] = useState("");
 
   const handleInputChange = (e) => {
     setGroupName(e.target.value);
@@ -28,20 +30,22 @@ const Home = () => {
   };
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      const {validation} = modalValidations(groupName,selectedColor)
-      if(!validation?.name && !validation?.color){
+    e.preventDefault();
+    const { validation } = modalValidations(groupName, selectedColor);
+    if (!validation?.name && !validation?.color) {
+      try {
         saveToLocalStorage("group", { groupName, selectedColor });
         setIsModalOpen(false);
-        setGroupName('')
-        setSelectedColor('')
+        setGroupName("");
+        setSelectedColor("");
+        setErrMessage("");
+      } catch (err) {
+        console.log(err.message, "error");
       }
-      else{
-        setErrMessage(validation)
-      }
-  
+    } else {
+      setErrMessage(validation);
+    }
   };
-
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -56,6 +60,7 @@ const Home = () => {
 
   return (
     <MainContainer>
+      <ToastContainer/>
       {isModalOpen ? (
         <HomeModal
           colours={colours}

@@ -18,7 +18,6 @@ const HomeModal = ({
     setIsModalOpen(false);
     console.log(click);
   };
-  console.log(errMessage?.color,'[[[[[[[[[[[[[[[[[[[[[[')
 
   return (
     <div className={styles.ModalOverlay}>
